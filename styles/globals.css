@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@layer utilities {
+}
+
+:root {
+  --background: #fcfeff;
+}
+
+* {
+  box-sizing: border-box;
+  font-weight: normal;
+  font-family: poppins, sans-serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  max-width: 100vw;
+  background-color: var(--background);
+}
