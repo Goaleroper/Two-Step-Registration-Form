@@ -6,7 +6,9 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   autoFocus?: boolean;
   touched?: boolean;
   onChange?: ChangeEventHandler;
-  value: string;
+  value?: string;
+  error?: boolean;
+  errorMessage?: string;
 }
 
 const Input: FC<IInput> = ({
@@ -16,11 +18,13 @@ const Input: FC<IInput> = ({
   label,
   onChange,
   value,
+  error,
+  errorMessage,
   ...props
 }) => {
   return (
     <label className="w-2/3">
-      <span className="flex items-center text-xs lg:text-sm font-medium text-darkBlue pb-2">
+      <span className="flex items-center text-xs lg:text-sm text-darkBlue pb-2 font-normal">
         {label}
       </span>
       <input
@@ -32,6 +36,11 @@ const Input: FC<IInput> = ({
         value={value}
         {...props}
       />
+      {error ? (
+        <p className="text-xs text-red-600 pr-1">{errorMessage}</p>
+      ) : (
+        <></>
+      )}
     </label>
   );
 };
