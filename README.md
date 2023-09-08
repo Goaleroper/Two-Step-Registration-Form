@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Description
+This is a two step registration form which is based on Reactjs and typescript, the first page of the form collects the user's first name, last name, and profile picture and if all inputs are filled and there is no error , user can go to the second page and fill other fields include username and password finally the user submits form.
+In this project we use formik and yup for form validation. Also we have used context to satisfy the need for data retrieval, when user go back to the first page, as well as react query for API requests.
+We have used json-server as Mock API to handle API calls,too.
 
-## Getting Started
 
-First, run the development server:
+# Table of Contents
+•	Installation
+•	Usage
+•	API Mocking
+•	Technologies Used
+•	Contributing
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+# Installation
+1.	Clone the repository.
+2.	Install dependencies using npm install.
+3.	Start the development server using npm run dev.
+4.	run server using json-server --watch db.json --port 3001
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# API Mocking
+The project uses a mock API server for testing API calls during development. The mock API server is created using json-server.
+To install the server use npm install -g json-server and to start that, run the following command:
+json-server --watch db.json --port 3001
+This will start the mock API server on port 3001 and use the db.json file as the data source. It watch the db.json which is in the project root as the database.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Technologies Used
+•	React
+•	TypeScript
+•	React Context API
+•	React Query
+•	json-server
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Contributing
+Contributions are welcome. Please fork the repository and submit a pull request.
