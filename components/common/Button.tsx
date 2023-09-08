@@ -11,9 +11,10 @@ const Button: FC<IButton> = ({ className, disabled, title, ...props }) => {
   return (
     <button
       className={cn(
-        `transition-all w-1/4  relative flex items-center justify-center h-[3.25rem] rounded-xl p-4 bg-[#577987] text-white text-lg font-bold `,
+        `w-1/4 flex items-center justify-center h-[3.25rem] rounded-xl p-4 text-white text-lg font-bold ${disabled ? "!bg-gray-300" : "bg-grayGreen"}`,
         className
-      )}
+           )}
+           disabled={disabled}
       {...props}
     >
       {title}
