@@ -77,7 +77,7 @@ const RegistrationTwo = () => {
           name="password"
           autoFocus={false}
           onChange={formik.handleChange}
-          type="text"
+          type="password"
           value={formik.values.password}
           label="رمز عبور را وارد کنید"
           error={!!formik.errors.password && !!formik.touched.password}

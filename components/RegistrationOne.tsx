@@ -80,14 +80,14 @@ const RegistrationOne = () => {
 
   return (
     <main className=" w-full h-full relative flex flex-col bg-white gap-12 items-center justify-center">
-       <Image
-          loading="lazy"
-          width={100}
-          height={100}
-          src={logo}
-          alt="logo"
-          className="object-center absolute top-32"
-        />
+      <Image
+        loading="lazy"
+        width={100}
+        height={100}
+        src={logo}
+        alt="logo"
+        className="object-center absolute top-24"
+      />
       <p className="font-bold text-lg text-darkBlue text-center">
         خوش آمدید، <br />
         لطفا فرم زیر را تکمیل کنید!
@@ -118,7 +118,6 @@ const RegistrationOne = () => {
           name="image"
           label="عکس پروفایل خود را بارگذاری کنید"
           onChange={handleChange}
-          // showIcon={!image}
           fileTitle={image?.name ?? ""}
           showImage={!!image && !formik.errors.image}
           src={imageUrl ?? ""}

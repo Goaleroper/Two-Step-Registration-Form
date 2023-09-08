@@ -15,6 +15,7 @@ const config: Config = {
         darkBlue: "#1e2352",
         lightBlue: "#007aff",
         darkGray: "#0e1022",
+        grayGreen: "#577987",
       },
       backgroundImage: {
         landing: "url('../assets/images/trainPic.jpg')",
