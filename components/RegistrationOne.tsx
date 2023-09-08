@@ -8,8 +8,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useFormCtx } from "@/context/FormContext";
 import { Maybe } from "@/types/data";
-import { FcUpload } from "react-icons/fc";
-
+import logo from "../assets/images/logo.jpg";
 const RegistrationOne = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [image, setImage] = useState<Maybe<File>>(null);
@@ -38,8 +37,8 @@ const RegistrationOne = () => {
         .min(2, "حداقل دو کاراکتر مورد نیاز است")
         .required("لطفا فیلد را پر کنید"),
       last_name: Yup.string()
-        .min(2, "Mininum 2 characters")
-        .required("Required!"),
+        .min(2, "حداقل دو کاراکتر مورد نیاز است")
+        .required("لطفا فیلد را پر کنید"),
       image: Yup.mixed<File>()
         .required("آپلود عکس الزامی است")
         .test(
@@ -49,7 +48,7 @@ const RegistrationOne = () => {
         )
         .test(
           "fileFormat",
-          "فرمت عکس قابل قبول نیست",
+          "فرمت قابل قبول نیست",
           (value) => value && SUPPORTED_FORMATS.includes(value.type)
         ),
     }),
@@ -61,7 +60,6 @@ const RegistrationOne = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-
     let image = e.target.files && e.target.files[0];
     previewImage(image);
     formik.setFieldValue("image", image);
@@ -81,7 +79,15 @@ const RegistrationOne = () => {
   };
 
   return (
-    <main className=" w-full h-full flex flex-col bg-white gap-12 items-center justify-center">
+    <main className=" w-full h-full relative flex flex-col bg-white gap-12 items-center justify-center">
+       <Image
+          loading="lazy"
+          width={100}
+          height={100}
+          src={logo}
+          alt="logo"
+          className="object-center absolute top-32"
+        />
       <p className="font-bold text-lg text-darkBlue text-center">
         خوش آمدید، <br />
         لطفا فرم زیر را تکمیل کنید!
@@ -112,38 +118,13 @@ const RegistrationOne = () => {
           name="image"
           label="عکس پروفایل خود را بارگذاری کنید"
           onChange={handleChange}
-          showIcon={!image}
+          // showIcon={!image}
+          fileTitle={image?.name ?? ""}
+          showImage={!!image && !formik.errors.image}
+          src={imageUrl ?? ""}
           error={!!formik.errors.image && !!formik.touched.image}
           errorMessage={formik.errors.image}
         />
-        {image && image.type.includes("image") ? (
-          <div className="flex flex-col">
-            <div className="rounded-full flex justify-center items-center border-4 border-gray-400 w-36 h-36 overflow-hidden">
-              <Image
-                width={120}
-                height={120}
-                src={imageUrl}
-                className="object-cover w-full h-full"
-                alt="..."
-              />
-            </div>
-            <p className="text-xs text-darkBlue pt-1 text-center">
-              {image?.name ?? ""}
-            </p>
-          </div>
-        ) : (
-          <></>
-        )}
-        {image && !image.type.includes("image") ? (
-          <div className="flex flex-col">
-            <FcUpload className={` w-8 h-8 mr-2 mt-3 self-center `} />
-            <p className="text-xs text-darkBlue pt-1 text-center">
-              {image?.name ?? ""}
-            </p>
-          </div>
-        ) : (
-          <></>
-        )}
         <Button type="submit" title="ادامه" />
       </form>
     </main>
