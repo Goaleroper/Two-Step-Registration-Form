@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky",
+    "prepare": "husky install",
     "postversion": "git push --tags && yarn publish . --tag $npm_package_version+1 && git push && echo \"Successfully released version $npm_package_version+1!\""
   },
   "dependencies": {
