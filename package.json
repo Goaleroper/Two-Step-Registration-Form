@@ -1,6 +1,6 @@
 {
   "name": "fadak-user-registry",
-  "version": "0.1.7",
+  "version": "0.1.6",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "postversion": "git push --tags  . --tag $npm_package_version+1 && git push && echo \"Successfully released version $npm_package_version+1!\""
+    "postversion": "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\"",
+    "prepush-hook": "git-branch-is master && yarn version --patch || yarn --no-git-tag-version version --patch",
+    "postmerge-hook": "git-branch-is master && yarn version --patch || yarn --no-git-tag-version version --patch"
   },
   "dependencies": {
     "@types/node": "20.5.9",
@@ -34,11 +36,5 @@
   "devDependencies": {
     "git-branch-is": "^4.0.0",
     "husky": "^9.0.11"
-  },
-  "husky": {
-    "hooks": {
-      "post-merge": "(git-branch-is master && yarn version --patch || (yarn --no-git-tag-version version patch)",
-      "pre-push": "(git-branch-is master && yarn version --patch || (yarn --no-git-tag-version version patch)"
-    }
   }
 }
