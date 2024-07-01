@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky",
+    "postversion": "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\"",
+    "prepush-hook": "git-branch-is main && yarn version --patch || yarn --no-git-tag-version version --patch",
+    "postmerge-hook": "git-branch-is main && yarn version --patch || yarn --no-git-tag-version version --patch"
   },
   "dependencies": {
     "@types/node": "20.5.9",
@@ -28,5 +32,15 @@
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
     "yup": "^1.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn prepush-hook",
+      "post-merge": "yarn postmerge-hook"
+    }
+  },
+  "devDependencies": {
+    "git-branch-is": "^4.0.0",
+    "husky": "^9.0.11"
   }
 }
