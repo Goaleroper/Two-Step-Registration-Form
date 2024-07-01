@@ -1,8 +1,7 @@
 {
   "name": "fadak-user-registry",
   "version": "0.1.3",
-  
-  "scripts": {
+    "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
